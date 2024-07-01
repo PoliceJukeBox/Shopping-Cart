@@ -8,7 +8,6 @@ btn.addEventListener("click", ()=>{
 let objContainer = document.querySelector(".object-container");
 let shoplistObjects = document.querySelector(".shoplist-objects");
 
-console.log(1 + "b");
 
 let array = [{
     index: 1,
@@ -32,7 +31,7 @@ let array = [{
     index: 4,
     image : "assets/Product4.jpg",
     name: "Product4",
-    price: 70,
+    price: 75,
     cantitate: 0,
 },{
     index: 5,
@@ -46,31 +45,47 @@ let array = [{
     name: "Product6",
     price: 170,
     cantitate: 0,
+},{
+    index: 7,
+    image : "assets/Product7.jpg",
+    name: "Product7",
+    price: 95,
+    cantitate: 0,
+},{
+    index: 8,
+    image : "assets/Product8.jpg",
+    name: "Product8",
+    price: 210,
+    cantitate: 0,
+},{
+    index: 9,
+    image : "assets/Product9.jpg",
+    name: "Product9",
+    price: 300,
+    cantitate: 0,
+},{
+    index: 10,
+    image : "assets/Product10.jpg",
+    name: "Product10",
+    price: 115,
+    cantitate: 0,
 }];
 
 array.forEach(display);
 
 function display(e){
     let newDid = document.createElement("div");
-    // newDid.innerHTML = `<h1 class="red">${e.name}</h1>
-    //                     <img src="${e.image}" alt="">
-    //                     <h5>${e.email}</h5>
-    //                     <button onclick="rata(${e.index})">Click me</button>`;
     newDid.innerHTML = `<div>
                             <img src="${e.image}" alt="">
                         </div>
                         <div>
                             <h5>${e.name}</h5>
                             <h5 style="color:red">${e.price + " LEI"}</h5>
-                            <button onclick="rata(${e.index})">Add to cart</button>
-                        </div>`
-                                
-                            
+                            <button onclick="rata(${e.index})">ADD TO CART</button>
+                        </div>`                     
     newDid.classList.add("item-card");
     objContainer.appendChild(newDid);
 }
-
-
 
 let priceItem = [];
 for(let i=0; i<array.length; i++){
@@ -82,28 +97,30 @@ function rata(e){
     console.log(array[e-1].index);
     if(array[e-1].cantitate === 0){ 
         array[e-1].cantitate++;
+
         let newDid = document.createElement("div");
-        // newDid.innerHTML = `<h1 id="${e + "a"}">${array[e-1].name}</h1>
-        //                     <h3 id="${e + "b"}">${array[e-1].price}</h3>
-        //                     <h5 id="${e + "c"}">${array[e-1].email}</h5>`;
         newDid.innerHTML = `
                     <img src="assets/Product1.jpg" alt=""> 
                     <h3 id="${e + "a"}">${array[e-1].name}</h3>
                     <h5 id="${e + "b"}">${array[e-1].price}</h5>
                     <div class="add-and-remove">
-                        <button id="add">+</button>
+                        <button class="add">+</button>
                         <h3>/</h3>
                         <button id="remove">-</button>
                     </div> 
                 `;
         newDid.classList.add("cart-object");
         shoplistObjects.appendChild(newDid);
+
         totalPrice +=array[e-1].price;
-        document.getElementById("total").textContent = totalPrice + " LEI";
+        document.getElementById("total").textContent = "TOTAL: " + totalPrice + " LEI";
     }else{
         priceItem[e-1] += array[e-1].price;
-        totalPrice +=array[e-1].price;
         document.getElementById(`${e + "b"}`).textContent = priceItem[e-1];
-        document.getElementById("total").textContent = totalPrice + " LEI";
+        totalPrice +=array[e-1].price;
+        document.getElementById("total").textContent = "TOTAL: " + totalPrice + " LEI";
     }
 }
+
+
+
