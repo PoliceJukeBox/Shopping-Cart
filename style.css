@@ -103,14 +103,16 @@ header div span{
     border-radius: 3px;
     cursor: pointer;
     font-size: 15px;
+    font-weight: 600;
 }
 
 .shoplist-container{
-    background-color: rgb(252, 60, 60);
+    background-color: rgb(163, 163, 163);
     width: 0;
     transition: width 0.5s;
     padding-top: 30px;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
     position: relative;
 }
 
@@ -127,7 +129,7 @@ header div span{
 
 .shoplist-ojbects{
     display:grid;
-    margin-bottom: 10px;
+    margin-bottom: 100px;
 }
 
 .cart-object{
@@ -168,9 +170,9 @@ header div span{
 }
 
 .total-container{
-    background-color: rgb(252, 60, 60);
+    background-color: transparent;
     position: absolute;
-    bottom: 20px;
+    bottom: 0;
     width: 100%;
     height: 100px;
     display: flex;
