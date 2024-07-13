@@ -64,6 +64,11 @@ let products = [{
 }];
 
 let listItems = [];
+let priceList = [];
+
+for(let i = 0; i<products.length; i++){
+    priceList[i] = products[i].price;
+}
 
 function initApp(){
     products.forEach((value)=>{
@@ -86,6 +91,9 @@ function addToItem(key){
     if(listItems[key] == null){
         listItems[key] = products[key];
         listItems[key].quantity = 1;
+    }else{
+        listItems[key].quantity++;
+        listItems[key].price+= priceList[key];
     }
     reloadItem();
 }
@@ -94,9 +102,10 @@ function reloadItem(){
     shoplistObjects.textContent = '';
     let count = 0;
     let totalPrice = 0;
+    
     listItems.forEach((value, key) =>{
-        totalPrice = totalPrice + value.price;
-        count = count + value.quantity;
+        totalPrice += value.price;
+        count += value.quantity;
         
         if(value != null){
             let newDiv = document.createElement("li");
@@ -126,76 +135,8 @@ function changeQuantity(key, quantity){
     if(quantity == 0){
         delete listItems[key];
     }else{
-        const pret = products[key].price;
-        console.log(products[key].price);
-        console.log(listItems[key].price);
         listItems[key].quantity = quantity;
-        listItems[key].price = quantity * pret;
+        listItems[key].price = quantity * priceList[key];
     }
     reloadItem();
 }
-// array.forEach(display);
-
-// function display(e){
-
-//     let newDid = document.createElement("div");
-//     newDid.innerHTML = `<div>
-//                             <img src="${e.image}" alt="">
-//                         </div>
-//                         <div>
-//                             <h5>${e.name}</h5>
-//                             <h5 style="color:red">${e.price + " LEI"}</h5>
-//                             <button onclick="rata(${e.index})">ADD TO CART</button>
-//                         </div>`                     
-//     newDid.classList.add("item-card");
-//     objContainer.appendChild(newDid);
-// }
-
-// let priceItem = [];
-// for(let i=0; i<array.length; i++){
-//     priceItem[i]=array[i].price;
-// }
-// let totalPrice=0;
-// let cantitateIcon = 1;
-
-// function rata(e){
-
-//     document.getElementById("cantitateIcon").textContent = cantitateIcon++;
-
-//     if(array[e-1].cantitate === 0){ 
-//         array[e-1].cantitate++;
-
-//         let newDid = document.createElement("div");
-//         newDid.innerHTML = `
-//                     <img src="assets/Product1.jpg" alt=""> 
-//                     <div style="display: block;">
-//                         <h3 id="${e + "a"}">${array[e-1].name}</h3>
-//                         <h3 id="${e + "c"}">${array[e-1].cantitate}</h3>
-//                     </div>
-//                     <h5 id="${e + "b"}">${array[e-1].price}</h5>
-//                     <div class="add-and-remove">
-//                         <button id="add">+</button>
-//                         <h3>/</h3>
-//                         <button id="remove">-</button>
-//                     </div> 
-//                 `;
-//         newDid.classList.add("cart-object");
-//         shoplistObjects.appendChild(newDid);
-
-//         totalPrice +=array[e-1].price;
-//         document.getElementById("total").textContent = "TOTAL: " + totalPrice + " LEI";
-//     }else{
-//         priceItem[e-1] += array[e-1].price;
-//         document.getElementById(`${e + "b"}`).textContent = priceItem[e-1];
-//         document.getElementById(`${e + "c"}`).textContent = ++array[e-1].cantitate;
-//         totalPrice +=array[e-1].price;
-//         document.getElementById("total").textContent = "TOTAL: " + totalPrice + " LEI";
-
-//         document.getElementById("add").addEventListener("click", (e)=>{
-//             console.log(e.target);
-//         });
-        
-//     }
-// }
-
-

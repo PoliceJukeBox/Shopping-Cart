@@ -104,6 +104,12 @@ header div span{
     cursor: pointer;
     font-size: 15px;
     font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.item-card div:nth-child(2) button:hover{
+    background-color: rgb(255, 210, 0);
+    color: #fff;
 }
 
 .shoplist-container{
@@ -127,9 +133,15 @@ header div span{
     width: 500px;
 }
 
-.shoplist-ojbects{
-    display:grid;
-    margin-bottom: 100px;
+.shoplist-objects{
+    height: 70%;
+    z-index: 1;
+    overflow-y: scroll;
+    
+}
+
+.shoplist-objects::-webkit-scrollbar{
+    display: none;
 }
 
 .cart-object{
@@ -170,7 +182,8 @@ header div span{
 }
 
 .total-container{
-    background-color: transparent;
+    background-color: rgb(163, 163, 163);
+    z-index: 10;
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -178,6 +191,5 @@ header div span{
     display: flex;
     justify-content: center;
     align-items: center;
-    border:2px black;
-    border-style: solid none;
+    border-top:2px solid black;
 }
