@@ -95,7 +95,9 @@ header div span{
     gap:5px;
 }
 
-.item-card div:nth-child(2) button{
+/* .item-card div:nth-child(2) button */
+
+.cardBtn{
     background-color: #fff;
     border: 1px solid rgb(157, 182, 185);
     width: 90%;
@@ -107,7 +109,7 @@ header div span{
     transition: 0.3s ease;
 }
 
-.item-card div:nth-child(2) button:hover{
+.cardBtn:hover{
     background-color: rgb(255, 210, 0);
     color: #fff;
 }
