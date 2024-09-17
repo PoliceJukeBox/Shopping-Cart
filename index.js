@@ -18,8 +18,11 @@ const supabase = createClient(supabaseUrl, supabaseKey)
 let data = await supabase.from('Products').select('*');
 let products = []
 
+console.log(data);
+
 for(let i=0; i< data.data.length; i++){
-    products[i] = data.data[i]
+    products[i] = data.data[i];
+    console.log(products[i]);
 }
 console.log(products[5].quantity);
 
@@ -101,7 +104,6 @@ function initApp(){
         // button.addEventListener("click", addToItem(value.index-1))                   
         objContainer.appendChild(newDid);
 
-        
     });
 }
 initApp();
